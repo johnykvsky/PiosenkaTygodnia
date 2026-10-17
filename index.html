@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piosenka Tygodnia — Katalog utworów</title>
+  <meta
+    name="description"
+    content="Piosenka Tygodnia — katalog i statystyki wspólnej playlisty muzycznej (604 utwory). Przeglądaj piosenki, wykonawców, albumy, roczniki i gatunki muzyczne."
+  />
+  <meta
+    name="keywords"
+    content="Piosenka Tygodnia, playlista, muzyka, katalog utworów, statystyki muzyczne, rock, alternatywa, rock progresywny, elektronika, jazz"
+  />
+  <meta name="author" content="Piosenka Tygodnia" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#111318" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="Piosenka Tygodnia" />
+  <meta property="og:title" content="Piosenka Tygodnia — Katalog i statystyki playlisty" />
+  <meta
+    property="og:description"
+    content="Katalog i statystyki playlisty Piosenka Tygodnia — 604 utwory, zestawienia dekad, roczników płyt, najczęstszych wykonawców i gatunków muzycznych."
+  />
+
+  <!-- Inline SVG Vinyl/Note Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23111318'/%3E%3Ccircle cx='32' cy='32' r='27' stroke='%23e5a93c' stroke-width='3.5'/%3E%3Ccircle cx='32' cy='32' r='19' stroke='%23e5a93c' stroke-width='1.5' stroke-dasharray='5 3' opacity='0.7'/%3E%3Ccircle cx='32' cy='32' r='9' stroke='%23e5a93c' stroke-width='2.5'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23e5a93c'/%3E%3C/svg%3E"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#utwory" class="brand" data-main-tab="tracks">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="3.5"/>
+          <circle cx="32" cy="32" r="21" stroke="currentColor" stroke-width="1.2" stroke-dasharray="5 3" opacity="0.65"/>
+          <circle cx="32" cy="32" r="15" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.65"/>
+          <circle cx="32" cy="32" r="9" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="32" cy="32" r="3" fill="currentColor"/>
+        </svg>
+        <div>
+          <span class="brand-title">Piosenka Tygodnia</span>
+          <span class="brand-subtitle">Katalog i statystyki utworów z playlisty</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Główna nawigacja">
+        <a href="#utwory" class="nav-link active" data-main-tab="tracks" aria-current="page">Lista utworów</a>
+        <a href="#statystyki" class="nav-link" data-main-tab="stats">Statystyki</a>
+        <a
+          href="https://open.spotify.com/playlist/0FrlCdqFAI5kqSDjKh1oJ5"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-link nav-link-spotify"
+          title="Otwórz playlistę w Spotify"
+        >
+          Spotify ↗
+        </a>
+        <button type="button" id="theme-toggle" class="theme-btn" aria-label="Przełącz motyw">☀️ Jasny motyw</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="view-tracks">
+      <section class="filters-panel" aria-label="Filtry i wyszukiwanie">
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label for="filter-artist">Wykonawca</label>
+            <div class="input-wrap">
+              <input
+                type="search"
+                id="filter-artist"
+                class="filter-input"
+                placeholder="np. Dire Straits, Archive, Kult..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-song">Tytuł utworu</label>
+            <div class="input-wrap">
+              <input
+                type="search"
+                id="filter-song"
+                class="filter-input"
+                placeholder="np. Again, Slip Away..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-album">Album</label>
+            <div class="input-wrap">
+              <input
+                type="search"
+                id="filter-album"
+                class="filter-input"
+                placeholder="np. Brothers in Arms, Anastasis..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-album-year">Rok wydania płyty</label>
+            <div class="input-wrap">
+              <input
+                type="search"
+                id="filter-album-year"
+                class="filter-input"
+                placeholder="np. 1978"
+                inputmode="numeric"
+                maxlength="4"
+                pattern="\d{4}"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-genre">Gatunek</label>
+            <select id="filter-genre" class="filter-select">
+              <option value="">Wszystkie gatunki</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filters-footer">
+          <div class="filters-meta">
+            <span id="results-count" class="results-count">Ładowanie utworów...</span>
+            <div id="active-tags" class="active-tags"></div>
+          </div>
+
+          <div class="filters-actions">
+            <div class="sort-order-group" role="group" aria-label="Kolejność wyświetlania">
+              <button type="button" id="btn-sort-desc" class="btn-order active" data-sort="desc" title="Od ostatnio dodanych (#604 → #1)">
+                ↓ Od najnowszych (#604 → #1)
+              </button>
+              <button type="button" id="btn-sort-asc" class="btn-order" data-sort="asc" title="Od początku playlisty (#1 → #604)">
+                ↑ Od pierwszego (#1 → #604)
+              </button>
+            </div>
+            <button type="button" id="btn-reset-filters" class="btn-reset" disabled>
+              Wyczyść filtry
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="tracks-list" class="tracks-list" aria-live="polite">
+        <!-- Tracks rendered via js/app.js -->
+      </section>
+    </div>
+
+    <div id="view-stats" hidden>
+      <div id="stats-root">
+        <!-- Statistics rendered via js/stats.js -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Piosenka Tygodnia • Katalog i statystyki playlisty
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/stats.js"></script>
+</body>
+</html>
